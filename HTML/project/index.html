@@ -1,0 +1,130 @@
+<!DOCTYOE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>my webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+       table, th, td{
+         border: 1px solid black;
+         border-collapse: collapse;
+       }
+
+       #headerTitle{
+
+         color: red;
+       }
+
+       .blueColor{
+
+         color: blue;
+       }
+
+       p.blueColor {
+
+         font-weight: bold;
+       }
+
+
+       .titleCenter {
+
+         text-align: center; 
+       }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="headerTitle">My Zoo</h1>
+    </header>
+
+    <nav>
+
+    <ul>
+         <li>Home</li>
+         <li>About</li>
+         <li>Contact</li>
+    </ul>
+    </nav>
+
+    <section>
+      <img src="img/catImage.jpg" width="100%" alt="Cat Image">
+    </section>
+    <br />
+
+    <section>
+      <h2>My video section</h2>
+      <br />
+      <video width="600" controls>
+          <source src="video.mp4" type="video/mp4">
+
+      </video>
+
+
+    </section>
+    <article>
+
+      <h3>Zoo description1</h3>
+      <p>html作業</p>
+      <p class="blueColor">html作業</p>
+
+    </article>
+    <br/>
+    <br/>
+    <br/>
+    <hr/>
+    <article>
+
+      <h3 class="blueColor titleCenter">Zoo description2</h3>
+      <p class="blueColor">html作業</p>
+      <p>html作業</p>
+
+    </article>
+
+    <br/>
+    <br/>
+    <br/>
+    <section>
+      <table style="width:100%; text-align: center;">
+
+        <caption>My animals</caption>
+        <tr>
+          <th>Animal</th>
+          <th>Amount</th>
+
+        </tr>
+        <tr>
+          <td>Lion</td>
+          <td>36</td>
+
+
+        </tr>
+        <tr>
+          <td>Elephant</td>
+          <td>25</td>
+
+        </tr>
+
+      </table>
+    </section>
+
+    <footer>
+
+      <form>
+        Email address:<br/>
+        <input type="email" name="email" value="Email"><br/>
+
+        Message:<br/>
+        <textarea rows="4" cols="50">
+
+        </textarea><br/><br/>
+      </form>
+
+      <p>&copy; 2019 All rights reserved.</p>
+
+    </footer>
+
+</body>
+</html>

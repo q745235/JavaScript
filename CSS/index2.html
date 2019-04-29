@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <title>Learning CSS</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+
+        body {
+
+
+          /*background-image: url("catImage.jpg");
+          background-repeat: no-repeat;
+          background-position:  top center;*/
+          background: url("catImage.jpg") no-repeat top center;
+
+        }
+
+        h1, p {
+
+          color: black;
+
+        }
+
+        h1 {
+
+          /*text-shadow: 7px 5px red;*/
+          /* letter-spacing: 5px; */
+          word-spacing: 30px;
+          background-color: rgba(75,223,148,0.5);
+
+        }
+
+        p {
+
+
+          /* background-color: Tomato; */
+          max-width: 200px;
+          text-align: justify;
+          line-height: 1;
+
+        }
+
+        section {
+
+          max-width: 150px;
+          /*height: 50px;*/
+          background-color: orange;
+
+        }
+
+        .myBorder1 {
+
+
+          /*border-style: solid;
+          border-width: 5px 10px;
+          border-color: Tomato;*/
+          border: 5px solid powderblue;
+          margin-bottom: 50px;
+          /*padding: 50px;*/
+
+          /*margin只取最大值*/
+          /*margin-left: 100px;
+          margin-top: 100px;*/
+          /*margin: auto;*/
+          /*border-radius: 150px;*/
+
+        }
+
+        .myBorder2 {
+
+
+          /*border-style: solid;
+          border-width: 5px 10px;
+          border-color: Tomato;*/
+          /*border: 5px solid powderblue;*/
+          margin-top: 60px;
+          padding: 50px;
+          box-sizing: border-box;
+          /*margin-left: 100px;
+          margin-top: 100px;*/
+
+          /*border-radius: 150px;*/
+
+        }
+
+        /* li {
+
+          display: inline;
+
+        } */
+
+        .align {
+
+          text-align: center;
+
+        }
+
+        a {
+
+          text-decoration: none;
+
+        }
+
+        .decoration {
+
+          text-decoration: line-through;
+
+        }
+
+        .redColor {
+
+          background-color: Tomato;
+
+        }
+
+        .absolutePosition {
+
+          position: absolute;
+          top: 0;
+          left: 50px;
+
+        }
+
+
+        .relativePosition {
+
+          position: relative;
+
+
+        }
+
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is established to be used for illustrative examples in documents. You may use this
+    domain in examples without prior coordination or asking for permission.</p>
+
+    <section class="myBorder2 decoration relativePosition">
+      That is a text2.
+      <section class="myBorder1 redColor absolutePosition">
+        <p class="align">That is a text.</p>
+      </section>
+    </section>
+    <div style="padding-bottom: 2000px;"></div>
+    <li><a href="#">Page1</a></li>
+    <li><a href="#">Page2</a></li>
+    <li><a href="#">Page3</a></li>
+</div>
+</body>
+</html>
