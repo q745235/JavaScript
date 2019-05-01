@@ -1,0 +1,58 @@
+:root {
+
+  --mouse-x;
+  --mouse-y;
+  --radius: 40px;
+  --factor: 1;
+  --scale;
+
+}
+
+body {
+
+  background-color: black;
+
+}
+
+#ball {
+
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 50%;
+  background-color: #FBD771;
+  position: absolute;
+
+  transform: translate(calc(var(--mouse-x) * 1px - var(--radius) / 2), calc(var(--mouse-y) * 1px - var(--radius) / 2));
+
+}
+
+.halo {
+
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 50%;
+  background-color: #FBD771;
+  opacity: 0.15;
+  position: absolute;
+
+  transform: scale(calc(var(--factor) * var(--scale)));
+
+}
+
+.halo:nth-child(1) {
+
+  --factor:0.3;
+
+}
+
+.halo:nth-child(2) {
+
+  --factor:0.5;
+
+}
+
+.halo:nth-child(3) {
+
+  --factor:0.9;
+
+}
