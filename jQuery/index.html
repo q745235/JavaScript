@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>Learning JavaScript</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+    <style>
+
+    #circle {
+
+      width: 200px;
+      height: 200px;
+      background-color: #A75688;
+      border-radius: 50%;
+
+    }
+
+    .square {
+
+      width: 200px;
+      height: 200px;
+      background-color: #E86D5E;
+      margin-top: 10px;
+
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="circle"></div>
+
+  <button id="b1">消退</button>
+  <button id="b2">出現</button>
+
+  <script type="text/javascript">
+
+    $("#circle").click(function() {
+
+      $(this).animate({
+
+        width: "400px",
+        height: "400px",
+        marginLeft: "100px", 
+
+      }, 2000);
+
+    });
+
+    $("#b1").click(function() {
+
+      $("#circle").fadeOut(3000, function() {
+
+        alert("消退動畫");
+
+      });
+
+    });
+
+    $("#b2").click(function() {
+
+      $("#circle").fadeIn("fast");
+
+    });
+
+  </script>
+
+</body>
+</html>
