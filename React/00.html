@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>00-babel-standalone的作用</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <!-- @babel/standalone 是獨立的編譯工具 作用是可以在瀏覽器中調用 babel 的 API 完成 EcmaScript 6 - EcmaScript 5 的轉換 -->
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js">
+
+
+  </script>
+
+  <!-- babel 調用 API 編輯執行 -->
+
+  <script type="text/javascript">
+
+  var input = 'const getMessage = () => "Hello World"; console.log(getMessage())';
+  var output = Babel.transform(input, { presets: ['es2015'] }).code;
+  window.eval(output);
+
+  </script>
+
+  <!-- babel 自動編輯執行  -->
+
+  <script type="text/babel">
+
+    const getMessage = () => "Hello World";
+    console.log(getMessage());
+
+  </script>
+
+</body>
+</html>

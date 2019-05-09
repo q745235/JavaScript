@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>03-列表渲染</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+
+    const fruits = [
+      <li key="1">蘋果</li>,
+      <li key="2">香蕉</li>,
+      <li key="3">橘子</li>
+    ]
+
+    const todos = [
+      {
+        id: 1,
+        title: 'eat'
+      },
+      {
+        id: 2,
+        title: 'sleep'
+      },
+      {
+        id: 3,
+        title: 'drink'
+      },
+    ]
+
+    // const todoLis = []
+    // todos.forEach(item => {
+    //   todoLis.push(<li key={item.id}>{item.title}</li>)
+    // })
+
+    const todoLis = todos.map(item => {
+      return <li key={item.id}>{item.title}</li>
+    })
+
+    const element = (
+      <div>
+        {/* 在 jsx 中, 綁定數組成員會直接把成員渲染到這裡 */}
+        <ul>{fruits}</ul>
+        <ul>
+          {/* 直接綁定一個數據 */}
+          {todoLis}
+        </ul>
+        <hr />
+        {/* 直接在標籤中動態生成一個數組 */}
+        <ul>
+          {
+            todos.map(item => {
+              return <li key={item.id}>{item.title}</li>
+            })
+          }
+        </ul>
+        </div>
+      )
+
+    ReactDOM.render(
+      element,
+      document.getElementById('app')
+    )
+
+  </script>
+
+</body>
+</html>

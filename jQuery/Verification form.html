@@ -132,13 +132,14 @@
     var pass2 = $("#pass2").val();
     var message = $("#mail-message").val();
 
-    function isValidEmailAddress(emailAddress) {
+    let isValidEmailAddress = function(emailAddress) {
 
       var pattern = /^\b[A-Z0-9-]+@[A-Z0-9]+\.com\b/i;
 
       return pattern.test(emailAddress);
 
     }
+
 
     if (name == "" || email == "" || pass1 == "" || pass2 == "" || message == "") {
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>02-jsx語法</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    .box {
+      height: 200px;
+      width: 200px;
+      background-color: pink;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+
+    //const element = <h1>hello react</h1>;
+
+    // const element = (
+    //   <div>
+    //     <h1>hello react</h1>
+    //     <p>Hi</p>
+    //   </div>
+    // )
+
+    // function getTitle() {
+    //   // javascript 語法, return 就不往後執行
+    //   return(
+    //     <div>
+    //       <h1>hello react</h1>
+    //       <p>Hi</p>
+    //     </div>
+    //   )
+    //
+    // }
+
+    const user = {
+      name: 'Jacl',
+      age: 18,
+      gender: 0
+    }
+    //
+    // const element = (
+    //   <div>
+    //     <p>{1 + 1}</p>
+    //     <p>{'hello'}</p>
+    //     {
+    //       // 不推薦
+    //       //這是jsx 和 EcmaScript 6 模板字串混搭
+    //     }
+    //
+    //     {/*推薦: 單行註釋 */}
+    //     {/*
+    //       推薦: 單行註釋
+    //       這是jsx 和 EcmaScript 6 模板字串混搭
+    //       */}
+    //
+    //     <p>{'hello' + user.name}</p>
+    //     <p>姓名: {user.name}</p>
+    //     <p>年齡: {user.age}</p>
+    //     <p>性別: {user.gender === 0 ? '男' : '女'}</p>
+    //   </div>
+    // )
+
+    // function getGreeting (user) {
+    //   if (user) {
+    //     return <h1>hello {user.name}</h1>
+    //   }
+    //   return <h1>hello stranger</h1>
+    // }
+    //
+    // const element = getGreeting(user)
+
+
+    // jsx 是 JavaScript
+    // class 在 JavaScript 中是一個關鍵字
+    // 所以在這寫 class 要改為 className
+    const element = (
+      <div className="box" title={user.name} >
+        <div>
+          <label htmlFor="">用戶名</label>
+          {/* jsx 單標籤必須結束 */}
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <input type="checkbox" defaultChecked />
+        </div>
+        <div>
+          <input type="text" defaultValue="hello" />
+        </div>
+      </div>
+    )
+
+    ReactDOM.render(
+      element,
+      document.getElementById('app')
+    )
+  </script>
+
+</body>
+</html>
