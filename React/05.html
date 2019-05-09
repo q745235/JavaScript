@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>05-函數式組件</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+    // 這不叫組件, 只是一個變量, 沒有狀態
+    // <div className="header">
+    //   <h1>頭部</h1>
+    // </div>
+
+    // 組件的名字首字母必須大寫
+    function AppHeader () {
+      return (
+        <div className="header">
+          <h1>頭部</h1>
+        </div>
+      )
+    }
+
+    function AppAside () {
+      return (
+        <div className="aside">
+          <ul>
+            <li>正在熱映</li>
+            <li>即將上映</li>
+          </ul>
+        </div>
+      )
+    }
+
+    function Welcome (props) {
+      return <h1>Hello, {props.name}</h1>
+    }
+
+    // ES6 Class
+    class AppFooter extends React.Component {
+      constructor () {
+        super()
+        // state 就是組件的狀態, 也就是把數據驅動視圖的數據初始化到 state 中
+        // state 類似魚 Vue 中的 data
+        this.state = {
+          foo: 'bar'
+        }
+
+        setTimeout(() => {
+          // 這樣不行
+          //this.state.foo = 'baz'
+
+          // 這才是正確的修改 state 數據的方式
+          this.setState({
+            foo: 'baz'
+          })
+        }, 2000)
+      }
+
+      render()  {
+        return(
+          <div className="footer">
+            <p>底部 {this.state.foo}</p>
+          </div>
+        )
+      }
+    }
+
+    const element = (
+      <div>
+        <AppHeader />
+        <div className="main">
+          <AppAside />
+          <div className="content">
+            <Welcome name="一" />
+            <Welcome name="二" />
+            <Welcome name="三" />
+          </div>
+        </div>
+        <AppFooter />
+      </div>
+    )
+
+    ReactDOM.render(
+      element,
+      document.getElementById('app')
+    )
+
+  </script>
+
+</body>
+</html>

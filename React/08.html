@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>08-帶有狀態的組件</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+    // 1. class 組件類, 必須繼承自 React.Component 才是一個組件類, 否則就是一個普通的類
+    // 2. 在組件類中, 必須通過 render 選染函數返回組件模板
+    // 3. 接下來就可以在其他能訪問到這個組件類的作用域中去使用這個組件
+    class MyComponent extends React.Component {
+      constructor () {
+        // 如果子類加入 constructor 構造函數, 則一定要手動調用父類的構造函數 super
+        super()
+        // React 組件需要通過手動為組件類添加 state 成員來初始化: ViewModel
+        // state 等價魚 Vue 中的 data
+        // 接下來就可以在該組件管理的模板中通過 {} 來訪問綁定數據
+        this.state = {
+          message: 'Hello, MyComponent!'
+        }
+      }
+      render () {
+        return (
+          <div>
+            <h1>{this.state.message}</h1>
+            <h1>{this.state.message}</h1>
+            {/*
+              事件綁定函數默認情況下內部的 this 指向 Window
+              自動接收一個 event 事件源對象
+              1. this 指向了 Window
+              2. 只能得到 event 無法傳參數
+              */}
+            <button onClick={this.handleClick}>點擊改變 message</button>
+
+            {/*
+              bind 了 this 的函數調用的時候, 會傳遞一個 event 事件源對象
+              內部的 this 就是 bind 的那個參數
+              1. 可以指定 this
+              2. 支持傳參數, 參數在前, 事件源對象在最後
+            */}
+            <button onClick={this.handleClick.bind(this, 123, 456)}>點擊改變 message</button>
+
+            {/*
+              當點擊 onClick 的時候, 調用綁定了 thiis 的箭頭函數
+              箭頭函數內部的 this 是組件實例
+              所以我可以直接在調用函數中再調用 this.handleClick() 函數
+              */}
+            <button onClick={(e) => {this.handleClick(e, 123, 456)}}>點擊改變 message</button>
+          </div>
+        )
+      }
+
+      // 規範: 處理事件的方法都取名為 handlexxx
+      handleClick (num1, num2, e) {
+        console.log(num1, num2, e)
+        // console.log('handle click')
+        // console.log(this) // 默認是 window
+
+        // React 不適使用類似於 Vue 中的 Object.defineProperty() 方式 get` set
+        //this.state.message = 'hello world'
+
+        //如果要修改 state 中的數據並希望得到試圖更新, 則一定要使用 this.setState 方法
+        // this.setState({
+        //   message: 'hello world'
+        // })
+      }
+    }
+
+    const element = <MyComponent />
+
+    ReactDOM.render(element, document.getElementById('app'))
+
+  </script>
+
+</body>
+</html>

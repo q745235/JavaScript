@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>04-事件綁定</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+
+    function handleClick () {
+      window.alert('hello')
+    }
+
+    const element =(
+      {/*
+        1. 事件綁定必須使用駝峰命名法
+        2. 事件綁定必須給定一個事件處理函數
+        3. 不能使用字符串的方式, 一定要使用 {函數} 來綁定
+        */},
+      <div>
+        <button onClick={handleClick}>點我</button>
+        {/* 直接綁定一個匿名函數 */}
+        <button onClick={() => alert('hello world')}>行內執行</button>
+      </div>
+    )
+
+    ReactDOM.render(
+      element,
+      document.getElementById('app')
+    )
+
+  </script>
+
+</body>
+</html>

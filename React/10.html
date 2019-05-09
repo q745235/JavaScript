@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>10-bind函數</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    function fn(a, b, c, d, e, f){
+      console.log(a, b, c); //1, 2, 3
+      console.log(d, e, f); //4, 5, 6
+    };
+
+    // 綁定的同時傳遞參數: 預傳參數, 不調用
+    // 預置參數
+    var newFn = fn.bind(this, 1, 2, 3);
+
+    // 調用的時候傳遞的參數, 該參數會和預傳參數合併到一起作為函數參數
+    newFn(4, 5, 6);
+
+    fn(4, 5, 6);
+  </script>
+
+</body>
+</html>

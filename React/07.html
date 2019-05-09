@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>07-class方式定義的組件</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <div id="app">
+
+  </div>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+    // 1. class 組件類, 必須繼承自 React.Component 才是一個組件類, 否則就是一個普通的類
+    // 2. 在組件類中, 必須通過 render 選染函數返回組件模板
+    // 3. 接下來就可以在其他能訪問到這個組件類的作用域中去使用這個組件
+    class MyComponent extends React.Component {
+      render () {
+        return (
+          <div>
+            <h1>My Component</h1>
+          </div>
+        )
+      }
+    }
+
+    const element = <MyComponent />
+
+    ReactDOM.render(element, document.getElementById('app'))
+
+  </script>
+
+</body>
+</html>

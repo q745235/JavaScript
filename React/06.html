@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>06-class的繼承</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+  <script type="text/javascript" src="node_modules/@babel/standalone/babel.js"></script>
+  <script type="text/javascript" src="node_modules/react/umd/react.development.js"></script>
+  <script type="text/javascript" src="node_modules/react-dom/umd/react-dom.development.js"></script>
+
+
+  <script type="text/babel">
+
+    class Person {
+      constructor (name, age, gender) {
+        this.name = name
+        this.age = age
+        this.gender = gender
+        this.type = 'human'
+      }
+
+      sayHello () {
+        window.alert('hello ' + this.name)
+      }
+    }
+
+    // class 可以使用 extends 關鍵字實現對父類的繼承
+    // 不僅可以繼承屬性, 還可以繼承父類的原型方法
+    // 這裡繼承的本質是使用: 原型式繼承
+    // 注意: 如果繼承了父類, 則一定要在子類的 constructor 中手動調用 super()
+    //       如果沒寫 constructor 則不需要 super()
+    class Student extends Person {
+      constructor (name, age, gender, id) {
+        // super 就是父類構造函數
+        // 借用父類構造函數, 把 name` age` gender 初始化到 Stuednt 實例中
+        super(name, age, gender)
+        this.id = id
+      }
+
+      study () {
+        console.log(this.name + ' 在學習')
+      }
+
+    }
+
+    class Teacher extends Person {
+      constructor (name, age, gender) {
+        // super 就是父類構造函數
+        // 借用父類構造函數, 把 name` age` gender 初始化到 Stuednt 實例中
+        super(name, age, gender)
+      }
+
+      teaching () {
+        console.log(this.name + ' 在上課')
+      }
+
+    }
+
+    const s1 = new Student('三', 18, '男')
+
+  </script>
+
+</body>
+</html>
