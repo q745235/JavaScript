@@ -17,8 +17,8 @@
               1.能隨瀏覽器大小改變的RWD網頁     
                   
 四.React:          
-              1.React的用法, jsx語法
-              2.用 React 實作 MVC
+              1.React的用法, jsx語法               
+              2.用 React 實作 MVC            
                 
 五.Try:        
               1.用JSON將驗證表單輸入的值複製在下方
