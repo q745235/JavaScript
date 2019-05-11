@@ -17,7 +17,7 @@
               1.能隨瀏覽器大小改變的 RWD 網頁     
                   
 四.React:          
-              1.React 的用法, jsx 語法               
+              1.React 的用法, jsx 語法、classc 和 extend 的實際運用               
               2.用 React 實作 MVC            
                 
 五.Try(參考網路資料自己嘗試):        
