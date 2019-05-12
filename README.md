@@ -8,9 +8,9 @@
 一.JavaScript:             
               1.mouseFollow: 有能追蹤滑鼠且依速度發出光暈的圓球         
               2.rectionTime: 點按會消失,隨機出現考驗反應的隨機顏色圖案
-              3.Game-JS: 骰子遊戲,搖骰子會輪流換玩家,得分會統計,骰子圖案會依點數改變,三次後勝者會出現獎盃圖案,還能中途重設遊戲
-              4.HowManyThingsYouBought_Static: (用 MVC 的模式製作, 我將原本用 JS 的語法改為 ES6 的 jQuery 語法) 
-                                               計算當月購買總金額,能在視圖增加或減少購買項目,且實時統計金額,能點按鈕輸入也能用 Enter 輸入
+              3.Game-JS: 骰子遊戲,搖骰子會輪流換玩家,得分會統計,骰子圖案會依點數改變,三次後勝者會出現獎盃圖案,還能中途重設遊戲              
+              4.HowManyThingsYouBought_Static: (用 MVC 的模式製作, 我將原本用 JS 的語法改為 ES6 的 jQuery 語法)              
+                                               計算當月購買總金額,能在視圖增加或減少購買項目,且實時統計金額,能點按鈕輸入也能用 Enter 輸入       
                           
 二.jQuery:               
               1.Verification form: 能驗證是否是正確郵箱和密碼的表單      
