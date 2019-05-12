@@ -25,5 +25,5 @@
               2.project: 用 React 實作 MVC  結構模式          
                 
 五.Try:        
-              1.Verification form1: 增加用 JSON 將驗證表單輸入的值複製在下方           
+              1.Verification form1: 增加用 JSON 將驗證表單輸入的值複製在下方成為一個新表單           
               2.cssRWD: 用 @media 將原本的網頁改成 RWD 網頁              
