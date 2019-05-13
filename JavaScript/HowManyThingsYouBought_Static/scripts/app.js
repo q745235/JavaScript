@@ -106,6 +106,16 @@ var view = (() => {
       list: '.bought_list',
       sumLabel: '.total_value',
       container: '.container',
+      month: '.month'
+
+    };
+
+    let formatting = (number) => {
+
+      number = number.toFixed(2);
+      number = number.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+      return number;
 
     };
 
@@ -141,7 +151,7 @@ var view = (() => {
 
         newHTML = html.replace('%id%', object.id);
         newHTML = newHTML.replace('%name%', object.name);
-        newHTML = newHTML.replace('%value%', object.value);
+        newHTML = newHTML.replace('%value%', formatting(object.value) + '元');
 
         $(element).append(newHTML);
 
@@ -179,7 +189,17 @@ var view = (() => {
 
       displaySum: (object) => {
 
-        $(DOMstrings.sumLabel).text(object.sum + '元');
+        $(DOMstrings.sumLabel).text(formatting(object.sum) + '元');
+      },
+
+      displayMonth: () => {
+
+        let now = new Date();
+
+        let year = now.getFullYear();
+        let month = now.getMonth() + 1;
+
+        $(DOMstrings.month).text(year+ '年' + month + '月');
       },
 
       getDOMstrings: () => {
@@ -257,6 +277,7 @@ var controller = ( (m, v) => {
     init: () => {
 
       console.log('APP started.');
+      view.displayMonth();
       view.displaySum({sum: 0});
       setupEventListerner();
 
