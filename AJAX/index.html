@@ -1,73 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-    <title>Learning AJAX</title>
+    <title>AJAX</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/blitzer/jquery-ui.css">
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/jquery-ui.min.js"></script>
-
-    <style>
-
-    </style>
 
 </head>
 
 <body>
 
-  <h2>AJAX1</h2>
-  <button id="btn1" type="button" onclick="loadXMLDoc()">请求数据1</button>
-  <div id="myDiv1"></div>
-
-  <h2>AJAX2</h2>
-  <button id="btn2" type="button">请求数据2</button>
-  <div id="myDiv2"></div>
+  <div id="myDiv"><h2>用 AJAX 修改內容</h2></div>
+  <button type="button" onclick="doAjax()">修改内容</button>
 
   <script type="text/javascript">
 
-  function loadXMLDoc()
-  {
-    var xmlhttp;
-    if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
-      xmlhttp=new XMLHttpRequest();
+  function doAjax(){
+
+    var request = null;
+
+    if (window.XMLHttpRequest) {
+
+      request = new XMLHttpRequest();
+
+    } else if (window.ActiveXObject) {
+
+      request =new ActiveXObject('Microsoft.XMLHTTP');
+
+    } else {
+
+      alert("你的瀏覽器不支持 ajax");
+
+      return false;
     }
-    else
-    {// code for IE6, IE5
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function()
-    {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      {
-        $("#myDiv1").html(xmlhttp.responseText);
-      }
-    }
-    xmlhttp.open("GET","test.txt",true);
-    xmlhttp.send();
-  };
+    request.onreadystatechange=function()
+	   {
+		     if (request.readyState == 4 && request.status == 200) {
+			        document.getElementById("myDiv").innerHTML = request.responseText;
+		        }
+	   }
 
-  // $.get("test.txt", (data) => {
-  //   alert(data);
-  // });
+    request.open("GET","test.txt",true);
+	  request.send();
 
-  $.ajax({
-    ull: "test.txt"
-  }).done( (data) => {
-
-    // alert(data);
-
-  });
-
-  $(document).ready( () => {
-    $("#btn2").click( () => {
-      $.get("test.txt", (data, status) => {
-        $("#myDiv2").html(data);
-      })
-    })
-  })
+  }
 
   </script>
 
