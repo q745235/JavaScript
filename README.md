@@ -1,5 +1,5 @@
-一.HTML:               
-              1. project 有用 html5 連接播放的影片和音樂        
+一.AJAX:               
+              1.Verification form: 用 ajax 連接 php 處理表單        
                   
 二.CSS:                    
               1.project1: 會以太陽為中心旋轉的地球和以地球為中心旋轉的月亮        
