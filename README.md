@@ -24,8 +24,13 @@
                   
 四.React:          
               1.index: React 的用法, jsx 語法、classc 和 extend 的實際運用               
-              2.project: 用 React 實作 MVC  結構模式          
+              2.project: 用 React 實作 MVC  結構模式    
+            
+五.Vue:
+              1.ES6 相關知識               
+              2.Vue.js 的元件及常用的API             
+              3.各種 Vue.js 練習                
                 
-五.Try:        
+六.Try:        
               1.Verification form1: 增加用 JSON 將驗證表單輸入的值複製在下方成為一個新表單           
               2.cssRWD: 用 @media 將原本的網頁改成 RWD 網頁              
