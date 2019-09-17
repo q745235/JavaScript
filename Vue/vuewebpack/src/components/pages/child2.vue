@@ -22,7 +22,6 @@ export default {
   },
 
   created() {
-    console.log(this.$route.params.id);
     const id = this.$route.params.id;
     const vm = this;
     this.$http.get(`https://randomuser.me/api/?seed=${id}`).then((response) => {
