@@ -26,7 +26,7 @@ export default {
     // const id = this.$route.params.id;
     const vm = this;
     this.$http.get('https://randomuser.me/api/').then((response) => {
-      console.log(response);
+      // console.log(response);
       vm.user = response.data.results[0];
     });
   }
