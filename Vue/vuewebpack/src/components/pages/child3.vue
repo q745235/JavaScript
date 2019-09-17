@@ -2,8 +2,9 @@
   <div>
     <img :src="user.picture.large" class="card-img-top" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{ user.gender }}</h5>
-    	<p class="card-text">{‌{ user.email }}</p>
+      <h5 class="card-title">Card 3</h5>
+      <p class="card-text">{{ user.gender }}</p>
+    	<p class="card-text">{{ user.phone }}</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     </div>
