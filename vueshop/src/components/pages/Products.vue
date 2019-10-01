@@ -21,10 +21,10 @@
           <td>{{ item.title }}</td>
           <td>{{ item.content }}</td>
           <td class="text-right">
-            {{ item.origin_price }}
+            {{ item.origin_price | currency }}
           </td>
           <td class="text-right">
-            {{ item.price }}
+            {{ item.price | currency }}
           </td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
@@ -43,7 +43,7 @@
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content border-0" style="width:80%; height:60%">
+        <div class="modal-content border-0" style="width:80%;">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
@@ -139,7 +139,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
+            <button type="button" class="btn btn-primary" @click="updateProduct" @keyup.enter="updateProduct">確認</button>
           </div>
         </div>
       </div>
