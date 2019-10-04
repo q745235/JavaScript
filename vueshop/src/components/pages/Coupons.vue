@@ -17,7 +17,7 @@
       <tbody>
         <tr v-for="(item) in coupons" :key="item.id">
           <td>{{ item.title }}</td>
-          <td>{{ item.percent }}</td>
+          <td>{{ item.percent }}%</td>
           <td class="text-right">{{ item.due_date }}</td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
@@ -36,7 +36,7 @@
     <div class="modal fade" id="couponModal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content border-0" style="width:80%;">
+        <div class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
@@ -56,19 +56,19 @@
                 </div>
                 <div class="form-group">
                   <label for="description">優惠碼</label>
-                  <input type="text" class="form-control" id="description"
-                    v-model="tempCoupon.description" 
+                  <input type="text" class="form-control" id="coupon_code"
+                    v-model="tempCoupon.code" 
                     placeholder="請輸入優惠碼"></input>
                 </div>
                 <div class="form-group">
                   <label for="content">到期日</label>
-                  <input type="text" class="form-control" id="content"
+                  <input type="text" class="form-control" id="due_date"
                     v-model="tempCoupon.due_date"
                     placeholder="請輸入到期日"></input>
                 </div>
                 <div class="form-group">
                   <label for="origin_price">折扣百分比</label>
-                    <input type="number" class="form-control" id="origin_price"
+                    <input type="number" class="form-control" id="percent"
                       v-model="tempCoupon.percent"
                       placeholder="折扣百分比">
                   </div>
@@ -154,10 +154,10 @@ export default {
     },
     openModal(isNew, item) {
       if (isNew) {
-        this.tempProduct = {};
+        this.tempCoupon = {};
         this.isNew = true;
       } else {
-        this.tempProduct = Object.assign({}, item);
+        this.tempCoupon = Object.assign({}, item);
         this.isNew = false;
       };
       $('#couponModal').modal('show');

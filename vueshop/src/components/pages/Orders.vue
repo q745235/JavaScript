@@ -13,9 +13,15 @@
       </thead>
       <tbody>
         <tr v-for="(item) in orders" :key="item.id">
-          <td>{{ item.paid_date }}</td>
-          <td>{{ item.user }}</td>
-          <td>{{ item.products }}</td>
+          <td>{{ item.create_at }}</td>
+          <td>{{ item.user.email }}</td>
+          <td>
+            <ul>
+              <li v-for="(product, i) in item.products" :key="i">
+                {{ product.product.title }} 數量 : {{ product.qty }}
+              </li>
+            </ul>
+          </td>
           <td class="text-right">
             {{ item.total | currency }}
           </td>

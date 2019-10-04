@@ -42,8 +42,8 @@
     <!-- Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content border-0" style="width:80%;">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
