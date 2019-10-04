@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <loading :active.sync="isLoading"></loading>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th width="180">購買時間</th>
+          <th>Email</th>
+          <th width="240">購買款項</th>
+          <th width="120">應付金額</th>
+          <th width="100">是否付款</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item) in orders" :key="item.id">
+          <td>{{ item.paid_date }}</td>
+          <td>{{ item.user }}</td>
+          <td>{{ item.products }}</td>
+          <td class="text-right">
+            {{ item.total | currency }}
+          </td>
+          <td>{{ item.is_paidis_paid }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <Pagination :pagination="pagination" @emitPage="getOrders"></Pagination>
+  </div>
+</template>
+
+<script>
+import Pagination from '../Pagination';
+
+export default {
+  data() {
+    return {
+      orders: {},
+      pagination: {},
+      isLoading: false,
+    };
+  },
+  components: {
+    Pagination,
+  },
+  methods: {
+    getOrders(page = 1) {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders?page=${page}`;
+      const vm = this;
+      vm.isLoading = true;
+      this.$http.get(api).then((response) => {
+        console.log(response.data);
+        vm.isLoading = false;
+        vm.orders = response.data.orders;
+        vm.pagination = response.data.pagination;
+      });
+    },
+  },
+  created() {
+    this.getOrders();
+  },
+};
+</script>

@@ -8,7 +8,7 @@
       <thead>
         <tr>
           <th width="120">分類</th>
-          <th>產品名稱</th>
+          <th >產品名稱</th>
           <th width="120">原價</th>
           <th width="120">售價</th>
           <th width="100">是否啟用</th>
@@ -139,7 +139,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="updateProduct" @keyup.enter="updateProduct">確認</button>
+            <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
           </div>
         </div>
       </div>
