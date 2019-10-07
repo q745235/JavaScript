@@ -18,7 +18,7 @@
         <tr v-for="(item) in coupons" :key="item.id">
           <td>{{ item.title }}</td>
           <td>{{ item.percent }}%</td>
-          <td class="text-right">{{ item.due_date }}</td>
+          <td class="text-right">{{ item.due_date | date }}</td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else>未啟用</span>
@@ -58,13 +58,13 @@
                   <label for="description">優惠碼</label>
                   <input type="text" class="form-control" id="coupon_code"
                     v-model="tempCoupon.code" 
-                    placeholder="請輸入優惠碼"></input>
+                    placeholder="請輸入優惠碼">
                 </div>
                 <div class="form-group">
                   <label for="content">到期日</label>
-                  <input type="text" class="form-control" id="due_date"
+                  <input type="date" class="form-control" id="due_date"
                     v-model="tempCoupon.due_date"
-                    placeholder="請輸入到期日"></input>
+                    placeholder="請輸入到期日">
                 </div>
                 <div class="form-group">
                   <label for="origin_price">折扣百分比</label>
@@ -158,6 +158,17 @@ export default {
         this.isNew = true;
       } else {
         this.tempCoupon = Object.assign({}, item);
+        const month =
+          new Date(item.due_date * 1000).getMonth() < 9
+            ? "0" + (new Date(item.due_date * 1000).getMonth() + 1)
+            : new Date(item.due_date * 1000).getMonth() + 1;
+        const date =
+          new Date(item.due_date * 1000).getDate() < 10
+            ? "0" + new Date(item.due_date * 1000).getDate()
+            : new Date(item.due_date * 1000).getDate();
+        this.tempCoupon.due_date = `${new Date(
+          item.due_date * 1000
+        ).getFullYear()}-${month}-${date}`;
         this.isNew = false;
       };
       $('#couponModal').modal('show');
@@ -166,10 +177,12 @@ export default {
       let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
       let httpMethod = 'post';
       const vm = this;
+      const timestamp = new Date(vm.tempCoupon.due_date).getTime();
       if (!vm.isNew) {
         api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         httpMethod = 'put';
-      }
+      };
+      vm.tempCoupon.due_date = Math.floor(timestamp / 1000); 
       this.$http[httpMethod](api, { data: vm.tempCoupon }).then((response) => {
         console.log(response.data);
         if (response.data.success) {

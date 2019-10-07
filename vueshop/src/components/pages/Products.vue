@@ -220,7 +220,7 @@ export default {
       if (!vm.isNew) {
         api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
         httpMethod = 'put';
-      }
+      };
       this.$http[httpMethod](api, { data: vm.tempProduct }).then((response) => {
         console.log(response.data);
         if (response.data.success) {
