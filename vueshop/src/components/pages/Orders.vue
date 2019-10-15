@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr v-for="(item) in orders" :key="item.id">
-          <td>{{ item.create_at }}</td>
+          <td>{{ item.create_at | date }}</td>
           <td>{{ item.user.email }}</td>
           <td>
             <ul>
@@ -25,7 +25,10 @@
           <td class="text-right">
             {{ item.total | currency }}
           </td>
-          <td>{{ item.is_paidis_paid }}</td>
+          <td>
+            <span v-if="item.is_paid" class="text-success">已付款</span>
+            <span v-else class="text-danger">還未繳清</span>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -53,7 +56,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        console.log(response);
         vm.isLoading = false;
         vm.orders = response.data.orders;
         vm.pagination = response.data.pagination;

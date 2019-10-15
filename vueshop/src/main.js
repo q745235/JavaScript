@@ -6,6 +6,9 @@ import VueAxios from 'vue-axios'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
+import VeeValidate, { Validator } from 'vee-validate';
+import TW from 'vee-validate/dist/locale/zh_TW'
+
 
 import App from './App';
 import router from './router';
@@ -14,7 +17,10 @@ import currencyFilter from './filters/currency';
 import dateFilter from './filters/date';
 
 Vue.config.productionTip = false
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
+
+Vue.use(VeeValidate)  //啟用API
+Validator.localize('zh-TW', TW)
 
 Vue.component('Loading', Loading);
 Vue.filter('currency', currencyFilter);
