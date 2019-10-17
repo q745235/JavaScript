@@ -149,9 +149,11 @@ export default {
     },
   created() {
     this.getProducts();
-    setTimeout(() => {
-      this.adModal();
-    }, 1000); 
+    if(this.$route.params.category === '全部') {
+      setTimeout(() => {
+        this.adModal();
+      }, 1000);
+    }
   },
 };
 </script>

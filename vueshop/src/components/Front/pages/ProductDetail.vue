@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link to="/home/customer_products/全部">首頁</router-link></li>
-        <li class="breadcrumb-item"><a @click.prevent="toCategory">{{ product.category }}</a></li>
+        <li class="breadcrumb-item"><router-link :to="{ name: 'CustomerProducts', params: { category: product.category }}">{{ product.category }}</router-link></li>
         <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
     </nav>
@@ -89,10 +89,6 @@ export default {
           vm.$bus.$emit('message:push', response.data.messgae, 'danger');
         };  
       });
-    },
-    toCategory(){
-      const vm = this;
-      vm.$router.push(`/home/customer_products/${ vm.product.category }`);
     },
   },
   created() {
