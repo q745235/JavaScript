@@ -3,9 +3,9 @@
     <loading :active.sync="isLoading"></loading>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li class="breadcrumb-item"><router-link to="../home">首頁</router-link></li>
+        <li class="breadcrumb-item"><a @click.prevent="toCategory">{{ product.category }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
     </nav>
 
@@ -82,7 +82,7 @@ export default {
       this.$http.post(api, { data: cart}).then((response) => {
         if (response.data.success) {
           console.log(response);
-          vm.$bus.$emit('message:push', '新增商品', 'success');
+          vm.$bus.$emit('message:push', '新增商品'+ vm.product.title, 'success');
           vm.$bus.$emit('updateCart');
           vm.$router.push('/home/customer_products/全部'); //購買完回首頁
         } else {
@@ -90,10 +90,14 @@ export default {
         };  
       });
     },
+    toCategory(){
+      const vm = this;
+      vm.$router.push(`/home/customer_products/${ vm.product.category }`);
+    },
   },
   created() {
     this.productId = this.$route.params.productId;
-    console.log(this.orderId);
+    console.log(this.productId);
     this.getProduct();
   },
 }

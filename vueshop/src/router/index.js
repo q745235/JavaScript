@@ -20,7 +20,7 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: 'home',
+      redirect: 'home/customer_products/全部',
     },
     {
       path: '/home',

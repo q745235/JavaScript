@@ -36,5 +36,46 @@
         </tr>
       </tfoot>
     </table>
+    <div class="text-right">
+      <button class="btn btn-danger" @click.prevent="toPay">送出訂單</button>
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return{
+      cart: {},
+      isLoading: false,
+    };
+  },
+  methods: {
+    getCart() {
+      const vm = this;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      vm.isLoading = true;
+      this.$http.get(api).then((response) => {
+        vm.cart = response.data.data;
+        console.log(response);
+        vm.isLoading = false;
+      });
+    },
+    removeCartItem(id) {
+      const vm = this;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
+      vm.isLoading = true;
+      this.$http.delete(api).then(() => {
+        vm.getCart();
+        vm.isLoading = false;
+      });
+    },
+    toPay() {
+      this.$router.push();
+    },
+  },
+  created() {
+    this.getCart();
+  },
+}
+</script>

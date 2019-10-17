@@ -169,6 +169,23 @@
         </div>
       </form>
     </div>
+
+    <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -242,6 +259,9 @@ export default {
         $('#productModal').modal('hide');
       });
     },
+    adModal() {
+      $('#adModal').modal('show');
+    },
     getCart() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
@@ -302,6 +322,9 @@ export default {
   created() {
     this.getProducts();
     this.getCart();
+    setTimeout(() => {
+      this.adModal();
+    }, 1000);    
   },
 };
 </script>
