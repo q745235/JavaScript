@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><router-link to="../home">首頁</router-link></li>
+        <li class="breadcrumb-item"><router-link to="/home/customer_products/全部">首頁</router-link></li>
         <li class="breadcrumb-item"><a @click.prevent="toCategory">{{ product.category }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
