@@ -1,12 +1,19 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="ml-0 ">
+    <!-- <div class="ml-0 ">
       <div class="toc-entry row"><a>全部商品</a></div>
       <div class="toc-item row"><a>肉類</a></div>
       <div class="toc-item row"><a>魚類</a></div>
       <div class="toc-item row"><a>蔬菜</a></div>
-    </div>
+    </div> -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><router-link to="/home/customer_products/全部">首頁</router-link></li>
+        <li class="breadcrumb-item active" aria-current="page"  v-if="this.$route.params.category !== '全部'">{{ this.$route.params.category }}</li>
+        <li class="breadcrumb-item active" aria-current="page" v-else>全部</li>
+      </ol>
+    </nav>
     <div class="row mt4" style="top:200px">
       <div class="col-md-4 mb-4" v-for="item in toggleProducts" :key="item.id">
         <div class="card border-0 shadow-sm">
@@ -53,7 +60,12 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <span class="h2">現在只要輸入優惠碼 [</span> 
+            <span class="text-warning h2"> food </span> 
+            <span class="h2">] </span><br />
+            <span class="h2">就享有</span> 
+            <span class="text-success h2">80%</span> 
+            <span class="h2">優惠</span>
           </div>
         </div>
       </div>
@@ -103,21 +115,21 @@ export default {
         vm.categoryProducts = vm.products.filter(item => item.category === list && item.is_enabled == 1);
         console.log(vm.categoryProducts);
       };
-      vm.getToggleProductList(1);
+      vm.getToggleProductList();
     },
     getToggleProductList(page) {
-        const vm = this;
-        let startItem = (page - 1) * 9,
-            endItem = page * 9,
-            paginationData = {};
-        vm.toggleProducts = vm.categoryProducts.slice(startItem, endItem);
-        paginationData.total_pages = Math.ceil(vm.categoryProducts.length / 9);
-        paginationData.current_page = page;
-        paginationData.current_page < paginationData.total_pages ? paginationData.has_next = true : paginationData
-            .has_next = false;
-        paginationData.current_page == 1 ? paginationData.has_pre = false : paginationData.has_pre = true;
-        vm.pagination = paginationData;
-      },
+      const vm = this;
+      let startItem = (page - 1) * 9,
+          endItem = page * 9,
+          paginationData = {};
+      vm.toggleProducts = vm.categoryProducts.slice(startItem, endItem);
+      paginationData.total_pages = Math.ceil(vm.categoryProducts.length / 9);
+      paginationData.current_page = page;
+      paginationData.current_page < paginationData.total_pages ? paginationData.has_next = true : paginationData
+          .has_next = false;
+      paginationData.current_page == 1 ? paginationData.has_pre = false : paginationData.has_pre = true;
+      vm.pagination = paginationData;
+    },
     getProduct(id) {
       const vm = this;
       vm.$router.push(`/home/product_detail/${id}`);
@@ -134,7 +146,7 @@ export default {
         console.log(response);
         vm.$bus.$emit('message:push', '新增商品', 'success');
         vm.status.loadingItem = '';
-        vm.getCart();
+        vm.$bus.$emit('cart:updete');
         $('#productModal').modal('hide');
       });
     },
@@ -157,3 +169,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .breadcrumb{
+    background-color: transparent;
+  }
+</style>

@@ -13,6 +13,9 @@ import CustomerCheckout from '@/components/pages/CustomerCheckout'
 import Home from '@/components/Front/Home'
 import ProductDetail from '@/components/Front/pages/ProductDetail'
 import CustomerProducts from '@/components/Front/pages/CustomerProducts'
+import UserOrder from '@/components/Front/pages/UserOrder'
+import UserCheckout from '@/components/Front/pages/UserCheckout'
+import UserPay from '@/components/Front/pages/UserPay'
 
 Vue.use(Router)
 
@@ -46,6 +49,21 @@ export default new Router({
           path: 'coupons',
           name: 'Coupons',
           component: Coupons,
+        },
+        {
+          path: 'user_order',
+          name: 'UserOrder',
+          component: UserOrder,
+        },
+        {
+          path: 'user_pay/:orderId',
+          name: 'UserPay',
+          component: UserPay,
+        },
+        {
+          path: 'user_checkout',
+          name: 'UserCheckout',
+          component: UserCheckout,
         },
       ],
     },

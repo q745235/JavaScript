@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><router-link to="/home/customer_products/全部">首頁</router-link></li>
-        <li class="breadcrumb-item"><router-link :to="{ name: 'CustomerProducts', params: { category: product.category }}">{{ product.category }}</router-link></li>
+        <li class="breadcrumb-item"><router-link :to="{ name: 'CustomerProducts', params: { category: product.category }}">{{ product.category }}</router-link></li>
         <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
       </ol>
     </nav>
@@ -83,7 +83,7 @@ export default {
         if (response.data.success) {
           console.log(response);
           vm.$bus.$emit('message:push', '新增商品'+ vm.product.title, 'success');
-          vm.$bus.$emit('updateCart');
+          vm.$bus.$emit('cart:updete');
           vm.$router.push('/home/customer_products/全部'); //購買完回首頁
         } else {
           vm.$bus.$emit('message:push', response.data.messgae, 'danger');
@@ -104,5 +104,7 @@ export default {
     max-width: 300px;
     max-height: 300px;
   }
-  
+  .breadcrumb{
+    background-color: transparent;
+  }
 </style>

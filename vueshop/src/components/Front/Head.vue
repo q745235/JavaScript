@@ -9,6 +9,7 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a href="#" class="nav-link">首頁</a></li>
           <li class="nav-item"><a href="#" class="nav-link">簡介</a></li>
+          <router-link to="../../login">登入</router-link>
           <li class="nav-item">
             <div>
               <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商品</a>
@@ -28,13 +29,24 @@
           <a class="btn btn-outline-success" href="#">搜尋</a>
         </li>
       </ul>
+      <Cart :cartData="cart"/>
     </nav>
   </div>
 </template>
 
 <script>
+import Cart from './Cart';
+
 export default {
   name: 'Navbar',
+  data() {
+    return {
+      cart:[],
+    }
+  },
+  components:{
+    Cart,
+  },
   methods: {
     
   },
