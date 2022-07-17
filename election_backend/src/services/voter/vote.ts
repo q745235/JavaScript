@@ -1,43 +1,52 @@
 import {Transaction} from 'sequelize';
-import {electionList_tb, candidateList_tb, votes_tb} from '../../mydb';
+import {electionList_tb, candidateList_tb, voterList_tb, votes_tb} from '../../mydb';
 
 
 export default async function(
   t: Transaction,
   electionName: string,
   candidate: string,
-  voter: string
+  userId: string
 ){
-
-  const r = <any>await electionList_tb.findOne({
+  try {
+    const r = <any>await electionList_tb.findOne({
       where: {
         electionName: electionName
       },
       transaction: t
-  })
+    })
 
-  if(!r){
-      throw new Error("The electionName is not exist");
-  }
+    if(!r){
+        throw new Error("The electionName is not exist");
+    }
 
-  if(r.isEnd || new Date() > r.endTime){
-    throw new Error(`The ${electionName} is end`);
-  }
+    if(r.isEnd || new Date() > r.endTime){
+      throw new Error(`The ${electionName} is end`);
+    }
 
-  const check = await votes_tb.findOne({
+    const u = await voterList_tb.findOne({
       where: {
-        electionName: electionName,
-        candidate: candidate,
-        voter: voter
+        userId: userId
       },
       transaction: t
-  })
+    })
 
-  if(check){
-    throw new Error("The voter had voted");
-  }
-  
-  try {
+    if(!u){
+      throw new Error(`The userId is not exist`);
+    }
+
+    const check = await votes_tb.findOne({
+        where: {
+          electionName: electionName,
+          candidate: candidate,
+          voter: userId
+        },
+        transaction: t
+    })
+
+    if(check){
+      throw new Error("The voter had voted");
+    }
     await candidateList_tb.increment({
       hasVotes: 1
     },{
@@ -50,10 +59,10 @@ export default async function(
     await votes_tb.create({
       electionName: electionName,
       candidate: candidate,
-      voter: voter
+      voter: userId
     })
   } catch (error) {
     console.log("vote : ",error);
-    throw new Error(`Can not start ${electionName}`)
+    throw new Error(`Can not vote ${electionName}`)
   }
 }

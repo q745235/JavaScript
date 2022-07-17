@@ -19,6 +19,6 @@ export default{
   hasVotes:{
     type: DataTypes.TINYINT,
     allowNull: false,
-    default: 0
+    defaultValue: 0
   },
 }

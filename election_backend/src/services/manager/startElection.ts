@@ -18,6 +18,11 @@ export default async function(
   if(!r){
       throw new Error("The electionName is not exist");
   }
+
+  if(!startTime){
+    throw new Error("The startTime is not exist");
+  }
+
   if(startTime < new Date()){
     throw new Error("The startTime is past");
   }
@@ -48,7 +53,7 @@ export default async function(
       transaction: t
     })
   } catch (error) {
-    console.log("startElectionName : ",error);
+    console.log("startElection : ",error);
     throw new Error(`Can not start ${electionName}`)
   }
   

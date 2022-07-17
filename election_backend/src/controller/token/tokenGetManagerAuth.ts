@@ -33,7 +33,7 @@ export default async (
       return next(new Error("Token Cannot get user"));
     }
 
-    if(!user.isManager){
+    if(user.isManager != 1){
       return next(new Error("Token is not Manager"));
     }
 

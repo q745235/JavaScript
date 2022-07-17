@@ -20,26 +20,6 @@ const votes_tb = mydb.define('votes', votes, {
   tableName: 'votes'
 })
 
-electionList_tb.hasMany(candidateList_tb, {
-  foreignKey: "electionName"
-})
-
-candidateList_tb.hasMany(votes_tb, {
-  foreignKey: "electionName"
-})
-
-candidateList_tb.hasMany(votes_tb, {
-  foreignKey: "candidate"
-})
-
-votes_tb.belongsTo(candidateList_tb, {
-  foreignKey: "electionName"
-})
-
-votes_tb.belongsTo(candidateList_tb, {
-  foreignKey: "candidate"
-})
-
 export {
   voterList_tb,
   electionList_tb,

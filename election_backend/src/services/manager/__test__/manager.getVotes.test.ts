@@ -3,6 +3,7 @@ import getVotes from "../getVotes";
 
 test("getVotes",async () => {
   await mydb.transaction(async(t) => {
-    await getVotes(t,"test");
+    let r = await getVotes(t,"test");
+    console.log(r)
   });
 })

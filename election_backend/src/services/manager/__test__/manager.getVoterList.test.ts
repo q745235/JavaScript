@@ -1,8 +1,9 @@
 import mydb from '../../../mydb';
 import getVoterList from "../getVoterList";
 
-test("endElection",async () => {
+test("getVoterList",async () => {
   await mydb.transaction(async(t) => {
-    await getVoterList(t,"test", "A", 1);
+    let r = await getVoterList(t,"test", "A", 1);
+    console.log(r);
   });
 })

@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 
 export default async function(email : string, subject : string, text : {}){
     let transporter = nodemailer.createTransport({
+      service: 'Gmail',
       host: "smtp.gmail.com",
       port: 465,
       secure: false, // true for 465, false for other ports
@@ -12,7 +13,7 @@ export default async function(email : string, subject : string, text : {}){
     });
     
     var mailOptions = {
-      from: '"qa472315" <server@gmail.com>',
+      from: '"q745235"<server@gmail.com>',
       to: email,
       subject: subject,
       text: text

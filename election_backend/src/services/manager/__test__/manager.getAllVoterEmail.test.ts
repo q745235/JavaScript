@@ -1,8 +1,9 @@
 import mydb from '../../../mydb';
 import getAllVoterEmail from "../getAllVoterEmail";
 
-test("endElection",async () => {
+test("getAllVoterEmail",async () => {
   await mydb.transaction(async(t) => {
-    await getAllVoterEmail(t,"test");
+    let r = await getAllVoterEmail(t,"test");
+    console.log(r)
   });
 })

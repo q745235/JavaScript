@@ -18,8 +18,8 @@ export default{
       unique: true
   },
   isManager:{
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.TINYINT,
     allowNull: false,
-    default: false
+    defaultValue: 0
   }
 }

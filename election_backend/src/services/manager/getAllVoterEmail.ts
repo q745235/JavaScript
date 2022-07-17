@@ -21,22 +21,24 @@ export default async function(
       where: {
         electionName: electionName,
       },
+      raw: true,
       transaction: t
     })
-  
+    console.log("v",v)
     const voters = v.map(voter => {
       return <string>voter['voter']
     })
-
+    console.log("voters",voters)
     const e = await voterList_tb.findAll({
       where:{
-        identity: {[Op.in]: voters}
+        userId: {[Op.in]: voters}
       }
     })
-
+    console.log("e",e)
     const email = e.map(voterList => {
       return <string>voterList['email']
     })
+    console.log("email",email)
     return email
   } catch (error) {
     console.log("getAllVoterList : ",error);

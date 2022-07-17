@@ -1,8 +1,9 @@
 import mydb from '../../../mydb';
 import getWinner from "../getWinner";
 
-test("getVotes",async () => {
+test("getWinner ",async () => {
   await mydb.transaction(async(t) => {
-    await getWinner(t,"test");
+    let r = await getWinner(t,"test")
+    console.log(r) ;
   });
 })
