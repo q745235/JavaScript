@@ -1,11 +1,12 @@
 四個表:  
-1.electionList_tb: 選舉名稱, 開始時間, 結束時間, 是否結束   
+1.electionList_tb: 選舉名稱, 開始時間, 結束時間, 是否結束  
+記錄選舉相關事務 
 2.candidateList_tb: 選舉名稱, 候選人, 得票數  
+方便管理員常常查得票數
 3.voterList_tb: ID, 身分證, email, 是否是管理員  
+記錄帳號事務
 4.votes_tb: 選舉名稱, 候選人, 投票人  
-
-candidateList_tb 的 得票數 方便管理員常常查得票數  
-votes_tb 則是用於送信和查某選舉投給某候選人的投票人  
+記錄某選舉有哪些投票人 
 
 步驟:   
 1.搭建環境 框架用 express, 資料庫用 MySQL, 測試用 jest  
