@@ -81,6 +81,8 @@ export default {
       this.$http.delete(api).then(() => {
         vm.getOrder();
         vm.isLoading = false;
+        vm.$bus.$emit('message:push', '已刪除商品', 'success');
+        vm.$bus.$emit('cart:updete');
       });
     },
     rest() {
@@ -100,10 +102,12 @@ export default {
       this.$http.post(api, {data: coupon }).then((response) => {
         if (response.data.success) {
           vm.getOrder();
+          vm.$bus.$emit('cart:updete');
           vm.coupon_code = '';
           vm.isLoading = false;
         } else {
           this.$bus.$emit('message:push', response.data.message, 'danger');
+          vm.$bus.$emit('cart:updete');
           vm.isLoading = false;
         };
       });

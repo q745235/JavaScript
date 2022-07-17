@@ -81,6 +81,7 @@ export default {
   data() {
     return {
       products: [],
+      product: {},
       categoryProducts: [],
       toggleProducts: [],
       pagination: {},
@@ -96,7 +97,7 @@ export default {
   methods: {
     getProducts() {
       const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/`;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
         vm.products = response.data.products;
@@ -115,7 +116,7 @@ export default {
         vm.categoryProducts = vm.products.filter(item => item.category === list && item.is_enabled == 1);
         console.log(vm.categoryProducts);
       };
-      vm.getToggleProductList();
+      vm.getToggleProductList(1);
     },
     getToggleProductList(page) {
       const vm = this;
@@ -144,7 +145,8 @@ export default {
       };
       this.$http.post(api, { data: cart}).then((response) => {
         console.log(response);
-        vm.$bus.$emit('message:push', '新增商品', 'success');
+        vm.product = response.data.data.product;
+        vm.$bus.$emit('message:push', '新增商品'+ vm.product.title, 'success');
         vm.status.loadingItem = '';
         vm.$bus.$emit('cart:updete');
         $('#productModal').modal('hide');

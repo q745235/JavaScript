@@ -40,7 +40,7 @@
                 小計 <strong>{{ product.num * product.price}}</strong> 元
               </div>
             <button type="button" class="btn btn-outline-danger btn-sm ml-auto"  @click="addCart(product.id, product.num)">
-              <i class="fas fa-spinner fa-spin"></i>
+              <i class="fas fa-spinner fa-spin" v-if="status.loadingItem"></i>
               加到購物車
             </button>
           </div>
@@ -59,6 +59,9 @@ export default {
       product: {},
       productId: '',
       isLoading: false,
+      status: {
+        loadingItem: false,
+      },
     };
   },
   methods: {
@@ -79,14 +82,17 @@ export default {
         product_id: id,
         qty
       };
+      vm.status.loadingItem = true;
       this.$http.post(api, { data: cart}).then((response) => {
         if (response.data.success) {
           console.log(response);
           vm.$bus.$emit('message:push', '新增商品'+ vm.product.title, 'success');
           vm.$bus.$emit('cart:updete');
+          vm.status.loadingItem = false;
           vm.$router.push('/home/customer_products/全部'); //購買完回首頁
         } else {
           vm.$bus.$emit('message:push', response.data.messgae, 'danger');
+          vm.status.loadingItem = false;
         };  
       });
     },

@@ -9,22 +9,33 @@
         <div class="carousel-item carousel-3 bg-cover">
         </div>
       </div>
-      <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a> -->
+      <Head id="head"/>
     </div>
   </div>
 </template>
+<script>
+import Head from './Head';
+
+export default {
+  components:{
+    Head,
+  },
+}
+</script>
 
 <style lang="scss" scoped>
+  #head {
+    position: absolute;
+    top:0px;
+    width: 100%;
+  }
 
+  #carouselExampleControls {
+    position: relative;
+    top: 0px;
+  }
   .carousel-item {
-    height: 200px;  
+    height: 300px;  
     width: 100%;
   }
   .carousel-1 {

@@ -10,10 +10,10 @@
       <loading :active.sync="isLoading"></loading>
       <table class="table table-hover table-sm" style="margin-bottom:0;">
         <thead>
-            <th></th>
-            <th>品名</th>
-            <th>數量</th>
-            <th>單價</th>
+            <th class="thead"></th>
+            <th class="thead">品名</th>
+            <th class="thead1">數量</th>
+            <th class="thead">單價</th>
           </thead>
       </table>
       <div class="align-middle text-center text-success" v-if="!cartLen"><p>您尚未購買商品</p></div>
@@ -30,7 +30,7 @@
               <td class="align-middle">
                 {{ item.product.title }}
                 <div class="text-success" v-if="item.coupon">
-                  已套用優惠券
+                  已優惠
                 </div>
               </td>
               <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
@@ -84,6 +84,7 @@ export default {
         vm.getCart();
         vm.isLoading = false;
         vm.$bus.$emit('message:push', '已刪除商品', 'success');
+        vm.$bus.$emit('cart:updete');
       });
     },
     toPay() {
@@ -101,6 +102,12 @@ export default {
 </script>
 
 <style lang="scss">
+  .thead {
+    padding-left: 20px !important;
+  }
+  .thead1 {
+    padding-left: 50px !important;
+  }
   #badge {
     top: -30px;
     right: -15px;

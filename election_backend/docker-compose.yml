@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  election:
+    build: .
+    ports: 
+      - "5666:3000"
+    image: election
+    container_name: election
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    environment: 
+      - SQL=localhost

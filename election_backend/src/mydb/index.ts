@@ -1,0 +1,50 @@
+import mydb from "./loadDB";
+
+import voterList from './model/voterList';
+import electionList from "./model/electionList";
+import candidateList from "./model/candidateList";
+import votes from "./model/votes";
+
+
+const voterList_tb = mydb.define('voterList', voterList, {
+    tableName: 'voterList'
+})
+
+const electionList_tb = mydb.define('electionList', electionList, {
+  tableName: 'electionList'
+})
+const candidateList_tb = mydb.define('candidateList', candidateList, {
+  tableName: 'candidateList'
+})
+const votes_tb = mydb.define('votes', votes, {
+  tableName: 'votes'
+})
+
+electionList_tb.hasMany(candidateList_tb, {
+  foreignKey: "electionName"
+})
+
+candidateList_tb.hasMany(votes_tb, {
+  foreignKey: "electionName"
+})
+
+candidateList_tb.hasMany(votes_tb, {
+  foreignKey: "candidate"
+})
+
+votes_tb.belongsTo(candidateList_tb, {
+  foreignKey: "electionName"
+})
+
+votes_tb.belongsTo(candidateList_tb, {
+  foreignKey: "candidate"
+})
+
+export {
+  voterList_tb,
+  electionList_tb,
+  candidateList_tb,
+  votes_tb,
+}
+
+export default mydb;
