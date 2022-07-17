@@ -21,7 +21,7 @@ export default async(req: Request, res: Response, next: NextFunction): Promise<v
     res.status(401).json({
       info: 'error',
       data:{
-        errorNumber: 14,
+        errorNumber: 16,
         error: error.message
       }
     })
