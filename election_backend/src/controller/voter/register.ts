@@ -10,7 +10,9 @@ export default async(req: Request, res: Response, next: NextFunction): Promise<v
         await register(t, identity,inputEmail);
         res.status(200).json({
           info: 'success',
-          message:"success"
+          data:{
+            message:"success"
+          }
         })
       })
     } catch (error) {

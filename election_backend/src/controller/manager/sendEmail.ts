@@ -15,13 +15,6 @@ export default async(req: Request, res: Response, next: NextFunction): Promise<v
       for(let i = 0; i < voters.length; i++){
         sendEmail(voters[i], electionName, r, score)
       }
-      res.status(200).json({
-        info: 'success',
-        data:{
-          electionName: electionName,
-          winner: r
-        }
-      })
     });
     
     

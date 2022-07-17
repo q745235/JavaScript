@@ -1,17 +1,17 @@
 import { Request, Response, NextFunction } from 'express';
 import mydb from "../../mydb";
-import getVoterList from '../../services/manager/getVoterList';
+import addCandidate from '../../services/manager/addCandidate';
 
 export default async(req: Request, res: Response, next: NextFunction): Promise<void> => {
   const {electionName, candidate, page} = req.body;
   try {
     await mydb.transaction(async (t) => {
-      const r = await getVoterList(t,electionName, candidate, page);
+      await addCandidate(t,electionName, candidate);
       res.status(200).json({
         info: 'success',
         data:{
           electionName: electionName,
-          voters: r
+          candidate: candidate
         }
       })
     });

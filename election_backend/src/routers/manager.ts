@@ -9,6 +9,7 @@ import startElection from '../controller/manager/startElection';
 import endElection from '../controller/manager/endElection';
 import addCandidate from '../controller/manager/addCandidate';
 import sendEmail from '../controller/manager/sendEmail';
+import newElection from '../controller/manager/newElection';
 
 const manager = express.Router();
 
@@ -20,5 +21,6 @@ manager.post("/startElection", tokenGetManagerAuth, startElection);
 manager.post("/endElection", tokenGetManagerAuth, endElection);
 manager.post("/addCandidate", tokenGetManagerAuth, addCandidate);
 manager.post("/sendEmail", tokenGetManagerAuth, sendEmail);
+manager.post("/newElection", tokenGetManagerAuth, newElection);
 
 export default manager;
