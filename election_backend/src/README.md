@@ -1,4 +1,4 @@
-四個表:
+四個表:  
 1.electionList_tb: 選舉名稱, 開始時間, 結束時間, 是否結束 
 2.candidateList_tb: 選舉名稱, 候選人, 得票數  
 3.voterList_tb: ID, 身分證, email, 是否是管理員  
