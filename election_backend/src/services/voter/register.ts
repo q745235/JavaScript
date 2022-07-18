@@ -26,7 +26,6 @@ export default async function(
           {identity:identity},
           {email: inputEmail}
         ]
-        
       },
     });
 

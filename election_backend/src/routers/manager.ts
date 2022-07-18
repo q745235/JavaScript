@@ -13,14 +13,14 @@ import newElection from '../controller/manager/newElection';
 
 const manager = express.Router();
 
-manager.get("/getVotes", tokenGetManagerAuth, getVotes);
-manager.get("/getVoterList", tokenGetManagerAuth, getVoterList);
-manager.get("/getWinner", tokenGetManagerAuth, getWinner);
+manager.get("/votes", tokenGetManagerAuth, getVotes);
+manager.get("/voterList", tokenGetManagerAuth, getVoterList);
+manager.get("/winner", tokenGetManagerAuth, getWinner);
 
-manager.post("/startElection", tokenGetManagerAuth, startElection);
-manager.post("/endElection", tokenGetManagerAuth, endElection);
-manager.post("/addCandidate", tokenGetManagerAuth, addCandidate);
-manager.post("/sendEmail", tokenGetManagerAuth, sendEmail);
-manager.post("/newElection", tokenGetManagerAuth, newElection);
+manager.post("/candidate", tokenGetManagerAuth, addCandidate);
+manager.post("/email", tokenGetManagerAuth, sendEmail);
+manager.post("/election", tokenGetManagerAuth, newElection);
 
+manager.put("/election", tokenGetManagerAuth, startElection);
+manager.put("/endElection", tokenGetManagerAuth, endElection);
 export default manager;
