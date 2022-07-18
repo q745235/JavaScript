@@ -1,10 +1,13 @@
 <h1>前言:</h1>
 
 會員投票用的後端程式  
-與前端串接的API 文擋在 API.docx
+與前端串接的API 文擋在 [API.docx](https://github.com/q745235/JavaScript/blob/master/election_backend/API.docx)
 
-<h2>終端機功能:</h2>   
+<h2>終端機功能:</h2>  
 
+安裝套件:
+
+    yarn
 開發用環境:
 
     yarn dev   
