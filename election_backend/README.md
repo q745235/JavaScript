@@ -8,21 +8,22 @@
 安裝套件:
 
     yarn
-開發用環境:
-
-    yarn dev   
-正式環境生產用: 
-
-    yarn start  
-編譯程式:
-
-    yarn build  
-測試 ? 程式:
-
-    yarn test ?   
 創建 MySQL 表單:
 
     yarn sync
+運行開發用環境:
+
+    yarn dev  
+編譯程式:
+
+    yarn build 
+運行正式用環境: 
+
+    yarn start  
+測試 ? 程式:
+
+    yarn test ?   
+
 
 <h2>四個記錄數據的表:</h2> 
 
