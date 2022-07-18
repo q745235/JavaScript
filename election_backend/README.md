@@ -11,9 +11,6 @@
 創建 MySQL 表單:
 
     yarn sync
-運行開發用環境:
-
-    yarn dev  
 編譯程式:
 
     yarn build 
@@ -23,7 +20,9 @@
 測試 ? 程式:
 
     yarn test ?   
+運行開發用環境:
 
+    yarn dev  
 
 <h2>四個記錄數據的表:</h2> 
 
