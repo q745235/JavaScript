@@ -11,7 +11,7 @@ const voter = express.Router();
 
 voter.post('/register',tokenGetAuth , register);
 voter.post('/vote',tokenGetAuth , vote);
-voter.post('/vote',login , sendToken);
+voter.post('/login',login , sendToken);
 
 
 export default voter; 
