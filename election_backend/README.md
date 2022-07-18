@@ -3,6 +3,24 @@
 會員投票用的後端程式  
 與前端串接的API 文擋在 API.docx
 
+<h2>終端機功能:</h2>   
+
+開發用環境:
+
+    yarn dev   
+正式環境生產用: 
+
+    yarn start  
+編譯程式:
+
+    yarn build  
+測試 ? 程式:
+
+    yarn test ?   
+創建 MySQL 表單:
+
+    yarn sync
+
 <h2>四個記錄數據的表:</h2> 
 
 >1.electionList_tb:   
