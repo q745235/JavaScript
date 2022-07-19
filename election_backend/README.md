@@ -17,9 +17,9 @@
 運行正式用環境: 
 
     yarn start  
-測試 ? 程式:
+測試 < file > 程式:
 
-    yarn test ?   
+    yarn test <file>   
 運行開發用環境:
 
     yarn dev  
